@@ -1,0 +1,25 @@
+.container {
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	background-color: #000000;
+	display: flex;
+	align-items: center;
+
+	h2 {
+		color: #ffffff;
+		font-size: 1.75em;
+		margin: 0 auto;
+		animation-name: pulse;
+		animation-duration: 2s;
+		animation-fill-mode: forwards;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+	}
+}
+
+@keyframes pulse {
+	0% { opacity: 0.7; }
+	50% { opacity: 1; }
+	100% { opacity: 0.7; }
+}
