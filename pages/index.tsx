@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Layout from '../components/layout';
 import Loading from '../components/loading';
+import Header from '../components/header';
 import styles from '../styles/home.module.scss';
 
 export default function Home() {
@@ -11,7 +12,7 @@ export default function Home() {
 	let classes: Array<string> = [styles.background];
 
 	if (!loading) {
-		classes.push(styles.backgroundShow);
+		classes.push(styles.show);
 	}
 
 	const handleLoaded = () => {
@@ -22,6 +23,8 @@ export default function Home() {
 		<Layout>
 			{loading && <Loading />}
 
+			<Header />
+
 			<main className={styles.main}>
 				<div className={classes.join(' ')}>
 					<Image
@@ -31,6 +34,8 @@ export default function Home() {
 						objectFit='cover'
 						onLoadingComplete={handleLoaded}
 					/>
+
+					<div></div>
 				</div>
 			</main>
 
