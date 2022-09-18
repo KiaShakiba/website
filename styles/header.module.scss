@@ -1,6 +1,56 @@
+
+$top: 38px;
+
 .header {
+	width: 100%;
+	padding: 38px;
 	position: fixed;
 	top: 0;
-	right: 0;
+	left: 0;
 	z-index: 2;
+
+	a {
+		color: #ffffff;
+		font-weight: 400;
+	}
+
+	nav {
+		float: right;
+
+		a {
+			font-size: 1em;
+			line-height: 42px;
+			margin-right: 32px;
+		}
+	}
+}
+
+.contact {
+	font-size: 20px;
+	line-height: 24px;
+	position: relative;
+	float: left;
+}
+
+.contact::before {
+	height: 2px;
+	width: 100px;
+	background-color: #ffffff;
+	position: absolute;
+	top: (24px - 2px) / 2;
+	left: -108px;
+	content: '';
+}
+
+.contact:hover {
+	margin-left: 16px;
+}
+
+.menuButton {
+	height: 42px;
+	width: 32px;
+	background-color: red;
+	position: fixed;
+	top: 32px;
+	right: 0;
 }

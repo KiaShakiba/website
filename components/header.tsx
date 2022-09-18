@@ -1,11 +1,21 @@
 import Link from 'next/link';
-import styles from '../styles/home.module.scss';
+import styles from '../styles/header.module.scss';
+
+type Props = {
+};
 
 export default function Header() {
 	return (
 		<header className={styles.header}>
+			<Link href='/'>
+				<a className={styles.contact}>CONTACT</a>
+			</Link>
+
+			<button className={styles.menuButton}></button>
+
 			<nav>
-				<Link href='/'>Home</Link>
+				<Link href='/'>HOME</Link>
+				<Link href='/'>ABOUT</Link>
 			</nav>
 		</header>
 	);
