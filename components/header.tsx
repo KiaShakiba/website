@@ -11,12 +11,19 @@ export default function Header() {
 				<a className={styles.contact}>CONTACT</a>
 			</Link>
 
-			<button className={styles.menuButton}></button>
+			<button className={styles.menuButton}>
+				<span>TEST</span>
+				<div className={styles.menuBars}>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</button>
 
-			<nav>
+			{/*<nav>
 				<Link href='/'>HOME</Link>
 				<Link href='/'>ABOUT</Link>
-			</nav>
+			</nav>*/}
 		</header>
 	);
 }
