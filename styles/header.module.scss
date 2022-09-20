@@ -1,5 +1,6 @@
 $height: 38px;
 $top-space: 38px;
+$menu-bar-height: 4px;
 
 .header {
 	width: 100%;
@@ -15,12 +16,23 @@ $top-space: 38px;
 	}
 
 	nav {
+		animation-duration: 0.15s;
+		animation-fill-mode: forwards;
+		animation-timing-function: linear;
+		animation-name: slideFadeOut;
+		overflow: hidden;
+		position: relative;
+		z-index: 2;
 		float: right;
 
 		a {
 			font-size: 16px;
 			line-height: $height;
 			margin-right: 32px;
+
+			&:hover {
+				text-decoration: underline;
+			}
 		}
 	}
 }
@@ -30,6 +42,7 @@ $top-space: 38px;
 	line-height: $height;
 	position: relative;
 	transition: margin 0.15s ease-out;
+	z-index: 2;
 	float: left;
 }
 
@@ -53,6 +66,7 @@ $top-space: 38px;
 	top: $top-space;
 	right: 0;
 	display: flex;
+	z-index: 2;
 
 	span {
 		color: #ffffff;
@@ -60,8 +74,36 @@ $top-space: 38px;
 		line-height: $height;
 		font-weight: 400;
 		margin-right: 16px;
-
+		animation-duration: 0.15s;
+		animation-fill-mode: forwards;
+		animation-timing-function: linear;
+		animation-name: fadeIn;
+		overflow: hidden;
 	}
+}
+
+.menuOpen nav {
+	animation-name: slideFadeIn;
+}
+
+.menuOpen span {
+	animation-name: fadeOut;
+}
+
+.menuOpen .menuBars div {
+	width: 100% !important;
+}
+
+.menuOpen .menuBars div:nth-child(1) {
+	transform: translateY(($height - $menu-bar-height)/2) rotate(45deg);
+}
+
+.menuOpen .menuBars div:nth-child(2) {
+	opacity: 0;
+}
+
+.menuOpen .menuBars div:nth-child(3) {
+	transform: translateY(-($height - $menu-bar-height)/2) rotate(-45deg);
 }
 
 .menuBars {
@@ -70,17 +112,163 @@ $top-space: 38px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	align-items: end;
+	align-items: flex-end;
 
 	div {
 		height: 4px;
 		width: 100%;
 		background-color: #ffffff;
+		transition: all 0.15s;
 	}
 
 	@for $i from 2 through 3 {
 		div:nth-child(#{$i}) {
 			width: 100% - 10% * $i;
 		}
+	}
+}
+
+.shade {
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	animation-duration: 0.15s;
+	animation-fill-mode: forwards;
+	animation-timing-function: linear;
+	animation-name: shadeFadeOut;
+	overflow: hidden;
+}
+
+.menuOpen .shade {
+	animation-name: shadeFadeIn;
+}
+
+@keyframes fadeIn {
+	0% {
+		height: 0;
+		width: 0;
+		opacity: 0;
+	}
+
+	1% {
+		height: auto;
+		width: auto;
+		opacity: 0;
+	}
+
+	100% {
+		height: auto;
+		width: auto;
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOut {
+	0% {
+		height: auto;
+		width: auto;
+		opacity: 1;
+	}
+
+	99% {
+		height: auto;
+		width: auto;
+		opacity: 0;
+	}
+
+	100% {
+		height: 0;
+		width: 0;
+		opacity: 0;
+	}
+}
+
+@keyframes slideFadeIn {
+	0% {
+		height: 0;
+		width: 0;
+		opacity: 0;
+		transform: translateX(32px);
+	}
+
+	1% {
+		height: auto;
+		width: auto;
+		opacity: 0;
+		transform: translateX(32px);
+	}
+
+	100% {
+		height: auto;
+		width: auto;
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideFadeOut {
+	0% {
+		height: auto;
+		width: auto;
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	99% {
+		height: auto;
+		width: auto;
+		opacity: 0;
+		transform: translateX(32px);
+	}
+
+	100% {
+		height: 0;
+		width: 0;
+		opacity: 0;
+		transform: translateX(32px);
+	}
+}
+
+@keyframes shadeFadeIn {
+	0% {
+		height: 0;
+		width: 0;
+		opacity: 0;
+	}
+
+	1% {
+		height: 100%;
+		width: 100%;
+		opacity: 0;
+	}
+
+	100% {
+		height: 100%;
+		width: 100%;
+		opacity: 1;
+	}
+}
+
+@keyframes shadeFadeOut {
+	0% {
+		height: 100%;
+		width: 100%;
+		opacity: 1;
+	}
+
+	99% {
+		height: 100%;
+		width: 100%;
+		opacity: 0;
+	}
+
+	100% {
+		height: 0;
+		width: 0;
+		opacity: 0;
 	}
 }
