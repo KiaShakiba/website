@@ -1,6 +1,11 @@
+@import './variables';
+
 $height: 38px;
 $top-space: 38px;
 $menu-bar-height: 4px;
+
+$height-mobile: 28px;
+$top-space-mobile: 12px;
 
 .header {
 	width: 100%;
@@ -10,9 +15,20 @@ $menu-bar-height: 4px;
 	left: 0;
 	z-index: 2;
 
+	@media screen and (max-width: $landscape-mobile) {
+		background-color: #ffffff;
+		padding: $top-space-mobile 24px;
+		position: relative;
+		display: flex;
+	}
+
 	a {
 		color: #ffffff;
 		font-weight: 400;
+
+		@media screen and (max-width: $landscape-mobile) {
+			color: #222222;
+		}
 	}
 
 	nav {
@@ -25,10 +41,26 @@ $menu-bar-height: 4px;
 		z-index: 2;
 		float: right;
 
+		@media screen and (max-width: $landscape-mobile) {
+			background-color: #ffffff;
+			position: fixed;
+			top: 0;
+			right: 0;
+			animation-name: slideOutMobile;
+		}
+
 		a {
 			font-size: 16px;
 			line-height: $height;
 			margin-right: 32px;
+
+			@media screen and (max-width: $landscape-mobile) {
+				line-height: $height-mobile;
+				width: 100%;
+				margin: 0;
+				padding: 16px;
+				float: left;
+			}
 
 			&:hover {
 				text-decoration: underline;
@@ -44,6 +76,11 @@ $menu-bar-height: 4px;
 	transition: margin 0.15s ease-out;
 	z-index: 2;
 	float: left;
+
+	@media screen and (max-width: $landscape-mobile) {
+		font-size: 16px;
+		line-height: $height-mobile;
+	}
 }
 
 .contact::before {
@@ -54,6 +91,11 @@ $menu-bar-height: 4px;
 	top: ($height - 2px) / 2;
 	left: -108px;
 	content: '';
+
+	@media screen and (max-width: $landscape-mobile) {
+		background-color: #222222;
+		top: ($height-mobile - 2px) / 2;
+	}
 }
 
 .contact:hover {
@@ -61,12 +103,16 @@ $menu-bar-height: 4px;
 }
 
 .menuButton {
-	height: $height;
 	position: fixed;
 	top: $top-space;
 	right: 0;
 	display: flex;
 	z-index: 2;
+
+	@media screen and (max-width: $landscape-mobile) {
+		top: $top-space-mobile;
+		position: absolute;
+	}
 
 	span {
 		color: #ffffff;
@@ -79,11 +125,21 @@ $menu-bar-height: 4px;
 		animation-timing-function: linear;
 		animation-name: fadeIn;
 		overflow: hidden;
+
+		@media screen and (max-width: $landscape-mobile) {
+			color: #222222;
+			font-size: 16px;
+			line-height: $height-mobile;
+		}
 	}
 }
 
 .menuOpen nav {
 	animation-name: slideFadeIn;
+
+	@media screen and (max-width: $landscape-mobile) {
+		animation-name: slideInMobile;
+	}
 }
 
 .menuOpen span {
@@ -96,6 +152,10 @@ $menu-bar-height: 4px;
 
 .menuOpen .menuBars div:nth-child(1) {
 	transform: translateY(($height - $menu-bar-height)/2) rotate(45deg);
+
+	@media screen and (max-width: $landscape-mobile) {
+		transform: translateY(($height-mobile - $menu-bar-height)/2) rotate(45deg);
+	}
 }
 
 .menuOpen .menuBars div:nth-child(2) {
@@ -104,6 +164,10 @@ $menu-bar-height: 4px;
 
 .menuOpen .menuBars div:nth-child(3) {
 	transform: translateY(-($height - $menu-bar-height)/2) rotate(-45deg);
+
+	@media screen and (max-width: $landscape-mobile) {
+		transform: translateY(-($height - $menu-bar-height)/2) rotate(-45deg);
+	}
 }
 
 .menuBars {
@@ -114,11 +178,19 @@ $menu-bar-height: 4px;
 	justify-content: space-between;
 	align-items: flex-end;
 
+	@media screen and (max-width: $landscape-mobile) {
+		height: $height-mobile;
+	}
+
 	div {
 		height: 4px;
 		width: 100%;
 		background-color: #ffffff;
 		transition: all 0.15s;
+
+		@media screen and (max-width: $landscape-mobile) {
+			background-color: #222222;
+		}
 	}
 
 	@for $i from 2 through 3 {
@@ -145,6 +217,42 @@ $menu-bar-height: 4px;
 
 .menuOpen .shade {
 	animation-name: shadeFadeIn;
+}
+
+.social {
+	display: flex;
+	position: fixed;
+	right: 0;
+	bottom: 32px;
+	left: 0;
+	justify-content: center;
+	z-index: 2;
+
+	@media screen and (max-width: $landscape-mobile) {
+	}
+
+	a {
+		height: 32px;
+		width: 32px;
+		margin: 0 8px;
+		background-color: #ffffff;
+		border-radius: 50%;
+		opacity: 0.7;
+		transition: opacity 0.15s ease-out;
+
+		&:hover {
+			opacity: 1;
+		}
+
+		svg {
+			height: 100%;
+			width: 100%;
+		}
+	}
+}
+
+.menuOpen .social a {
+	transform: translateY(0);
 }
 
 @keyframes fadeIn {
@@ -230,6 +338,22 @@ $menu-bar-height: 4px;
 		width: 0;
 		opacity: 0;
 		transform: translateX(32px);
+	}
+}
+
+@keyframes slideInMobile {
+	0% {
+	}
+
+	100% {
+	}
+}
+
+@keyframes slideOutMobile {
+	0% {
+	}
+
+	100% {
 	}
 }
 

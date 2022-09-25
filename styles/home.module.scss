@@ -1,3 +1,6 @@
+@import './variables';
+@import './header.module';
+
 .main {
 	background-color: #000000;
 }
@@ -9,6 +12,10 @@
 	opacity: 0;
 	transition: opacity 2s ease-out;
 	filter: brightness(80%);
+
+	@media screen and (max-width: $landscape-mobile) {
+		height: calc(100vh - $height-mobile - 2 * $top-space-mobile);
+	}
 }
 
 .show {
