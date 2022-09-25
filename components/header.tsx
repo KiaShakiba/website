@@ -55,7 +55,7 @@ export default function Header() {
 			<div className={styles.shade}
 				onClick={() => setMenuOpen(false)}></div>
 
-			<div className={styles.social}>{socials.map(getSocial)}</div>
+			<div className={styles.socials}>{socials.map(getSocial)}</div>
 		</header>
 	);
 }

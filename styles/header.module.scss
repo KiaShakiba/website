@@ -42,11 +42,15 @@ $top-space-mobile: 12px;
 		float: right;
 
 		@media screen and (max-width: $landscape-mobile) {
+			height: 100%;
+			width: 80%;
+			padding: 25% 0;
 			background-color: #ffffff;
 			position: fixed;
 			top: 0;
-			right: 0;
-			animation-name: slideOutMobile;
+			left: 100%;
+			animation: none;
+			transition: left 0.15s ease-out;
 		}
 
 		a {
@@ -58,7 +62,8 @@ $top-space-mobile: 12px;
 				line-height: $height-mobile;
 				width: 100%;
 				margin: 0;
-				padding: 16px;
+				padding: 12px 32px;
+				text-align: right;
 				float: left;
 			}
 
@@ -138,7 +143,7 @@ $top-space-mobile: 12px;
 	animation-name: slideFadeIn;
 
 	@media screen and (max-width: $landscape-mobile) {
-		animation-name: slideInMobile;
+		left: auto;
 	}
 }
 
@@ -166,7 +171,7 @@ $top-space-mobile: 12px;
 	transform: translateY(-($height - $menu-bar-height)/2) rotate(-45deg);
 
 	@media screen and (max-width: $landscape-mobile) {
-		transform: translateY(-($height - $menu-bar-height)/2) rotate(-45deg);
+		transform: translateY(-($height-mobile - $menu-bar-height)/2) rotate(-45deg);
 	}
 }
 
@@ -219,7 +224,7 @@ $top-space-mobile: 12px;
 	animation-name: shadeFadeIn;
 }
 
-.social {
+.socials {
 	display: flex;
 	position: fixed;
 	right: 0;
@@ -229,29 +234,21 @@ $top-space-mobile: 12px;
 	z-index: 2;
 
 	@media screen and (max-width: $landscape-mobile) {
+		display: none;
 	}
 
 	a {
-		height: 32px;
-		width: 32px;
-		margin: 0 8px;
-		background-color: #ffffff;
-		border-radius: 50%;
-		opacity: 0.7;
-		transition: opacity 0.15s ease-out;
+		transform: translateY(64px);
+		transition: transform 0.15s ease-out;
 
-		&:hover {
-			opacity: 1;
-		}
-
-		svg {
-			height: 100%;
-			width: 100%;
+		@for $i from 2 through 10 {
+			&:nth-child(#{$i}) {
+			}
 		}
 	}
 }
 
-.menuOpen .social a {
+.menuOpen .socials a {
 	transform: translateY(0);
 }
 
