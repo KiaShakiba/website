@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import socials, { Social, getSocial } from './socials';
+import Close from '../icons/close.svg';
 import styles from '../styles/header.module.scss';
 
 type Props = {
@@ -46,10 +47,19 @@ export default function Header() {
 			</button>
 
 			<nav>
-				<button className='close-menu' onClick={() => setMenuOpen(false)}></button>
+				<button className={styles.closeMenu} onClick={() => setMenuOpen(false)}>
+					<Close />
+				</button>
 
-				<Link href='/'>HOME</Link>
-				<Link href='/'>ABOUT</Link>
+				<Link href='/'>
+					<a className={styles.navLink}>HOME</a>
+				</Link>
+
+				<Link href='/'>
+					<a className={styles.navLink}>ABOUT</a>
+				</Link>
+
+				<div className={styles.socialsMobile}>{socials.map(getSocial)}</div>
 			</nav>
 
 			<div className={styles.shade}
@@ -59,5 +69,3 @@ export default function Header() {
 		</header>
 	);
 }
-
-

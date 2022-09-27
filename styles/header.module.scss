@@ -6,6 +6,7 @@ $menu-bar-height: 4px;
 
 $height-mobile: 28px;
 $top-space-mobile: 12px;
+$nav-mobile-width: 80%;
 
 .header {
 	width: 100%;
@@ -43,7 +44,7 @@ $top-space-mobile: 12px;
 
 		@media screen and (max-width: $landscape-mobile) {
 			height: 100%;
-			width: 80%;
+			width: $nav-mobile-width;
 			padding: 25% 0;
 			background-color: #ffffff;
 			position: fixed;
@@ -53,7 +54,7 @@ $top-space-mobile: 12px;
 			transition: left 0.15s ease-out;
 		}
 
-		a {
+		.navLink {
 			font-size: 16px;
 			line-height: $height;
 			margin-right: 32px;
@@ -69,6 +70,46 @@ $top-space-mobile: 12px;
 
 			&:hover {
 				text-decoration: underline;
+			}
+		}
+
+		.closeMenu {
+			height: 32px;
+			width: 32px;
+			position: absolute;
+			top: 32px;
+			right: 24px;
+			display: none;
+
+			@media screen and (max-width: $landscape-mobile) {
+				display: inline-block;
+			}
+
+			svg {
+				height: 100%;
+				width: 100%;
+			}
+		}
+
+		.socialsMobile {
+			width: 100%;
+			display: none;
+			position: absolute;
+			bottom: 32px;
+			left: 0;
+			justify-content: center;
+			z-index: 2;
+
+			@media screen and (max-width: $landscape-mobile) {
+				display: flex;
+			}
+
+			a {
+				@for $i from 2 through 10 {
+					&:nth-child(#{$i}) {
+						transition-delay: 0.05s * ($i - 1);
+					}
+				}
 			}
 		}
 	}
@@ -143,7 +184,7 @@ $top-space-mobile: 12px;
 	animation-name: slideFadeIn;
 
 	@media screen and (max-width: $landscape-mobile) {
-		left: auto;
+		left: 100% - 80%;
 	}
 }
 
@@ -198,7 +239,7 @@ $top-space-mobile: 12px;
 		}
 	}
 
-	@for $i from 2 through 3 {
+	@for $i from 2 through 4 {
 		div:nth-child(#{$i}) {
 			width: 100% - 10% * $i;
 		}
@@ -243,6 +284,7 @@ $top-space-mobile: 12px;
 
 		@for $i from 2 through 10 {
 			&:nth-child(#{$i}) {
+				transition-delay: 0.05s * ($i - 1);
 			}
 		}
 	}

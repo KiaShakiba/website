@@ -4,6 +4,7 @@ import styles from '../styles/socials.module.scss';
 import Twitter from '../icons/twitter.svg';
 import Instagram from '../icons/instagram.svg';
 import Vero from '../icons/vero.svg';
+import Linkedin from '../icons/linkedin.svg';
 
 const socials: Array<Social> = [
 	{
@@ -20,6 +21,11 @@ const socials: Array<Social> = [
 		icon: Vero,
 		href: 'https://vero.co/kiashakiba',
 		className: styles.vero
+	},
+	{
+		icon: Linkedin,
+		href: 'https://linkedin.com/in/kiashakiba',
+		className: styles.linkedin
 	}
 ];
 
