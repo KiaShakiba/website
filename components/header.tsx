@@ -1,16 +1,28 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import socials, { Social, getSocial } from './socials';
+import socials, { getSocial } from './socials';
 import Close from '../icons/close.svg';
 import styles from '../styles/header.module.scss';
 
+export enum Pages {
+	HOME = '/',
+	ABOUT = '/about',
+	CV = '/cv',
+	PHOTOS = '/photos',
+	CONTACT = '/contact'
+}
+
 type Props = {
+	theme: 'light' | 'dark';
 };
 
-export default function Header() {
+export default function Header({ theme }: Props) {
 	const [menuOpen, setMenuOpen] = useState(false);
 
-	let classes = [styles.header];
+	let classes = [
+		styles.header,
+		theme === 'light' ? styles.light : styles.dark
+	];
 
 	if (menuOpen) {
 		classes.push(styles.menuOpen);
@@ -32,9 +44,7 @@ export default function Header() {
 
 	return (
 		<header className={classes.join(' ')}>
-			<Link href='/'>
-				<a className={styles.contact}>CONTACT</a>
-			</Link>
+			<Link href={Pages.CONTACT} className={styles.contact}>CONTACT</Link>
 
 			<button className={styles.menuButton} onClick={() => setMenuOpen(!menuOpen)}>
 				<span>MENU</span>
@@ -51,21 +61,22 @@ export default function Header() {
 					<Close />
 				</button>
 
-				<Link href='/'>
-					<a className={styles.navLink}>HOME</a>
-				</Link>
-
-				<Link href='/'>
-					<a className={styles.navLink}>ABOUT</a>
-				</Link>
+				{(() => {
+					return Object.entries(Pages).map((page, i) => {
+						return (
+							<Link href={page[1]} className={styles.navLink} key={i}>{page[0]}</Link>
+						);
+					});
+				})()}
 
 				<div className={styles.socialsMobile}>{socials.map(getSocial)}</div>
 			</nav>
 
 			<div className={styles.shade}
-				onClick={() => setMenuOpen(false)}></div>
+				onClick={() => setMenuOpen(false)}>
 
-			<div className={styles.socials}>{socials.map(getSocial)}</div>
+				<div className={styles.socials}>{socials.map(getSocial)}</div>
+			</div>
 		</header>
 	);
 }

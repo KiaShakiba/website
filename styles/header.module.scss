@@ -28,7 +28,7 @@ $nav-mobile-width: 80%;
 		font-weight: 400;
 
 		@media screen and (max-width: $landscape-mobile) {
-			color: #222222;
+			color: $color-grey;
 		}
 	}
 
@@ -116,10 +116,11 @@ $nav-mobile-width: 80%;
 }
 
 .contact {
+	color: #ffffff;
 	font-size: 20px;
 	line-height: $height;
 	position: relative;
-	transition: margin 0.15s ease-out;
+	transition: margin 0.15s ease-out, color 0.15s ease-out;
 	z-index: 2;
 	float: left;
 
@@ -127,6 +128,14 @@ $nav-mobile-width: 80%;
 		font-size: 16px;
 		line-height: $height-mobile;
 	}
+}
+
+.light .contact {
+	color: $color-grey;
+}
+
+.menuOpen .contact {
+	color: #ffffff;
 }
 
 .contact::before {
@@ -137,11 +146,20 @@ $nav-mobile-width: 80%;
 	top: ($height - 2px) / 2;
 	left: -108px;
 	content: '';
+	transition: background-color 0.15s ease-out;
 
 	@media screen and (max-width: $landscape-mobile) {
-		background-color: #222222;
+		background-color: $color-grey;
 		top: ($height-mobile - 2px) / 2;
 	}
+}
+
+.light .contact::before {
+	background-color: $color-grey;
+}
+
+.menuOpen .contact::before {
+	background-color: #ffffff;
 }
 
 .contact:hover {
@@ -173,11 +191,15 @@ $nav-mobile-width: 80%;
 		overflow: hidden;
 
 		@media screen and (max-width: $landscape-mobile) {
-			color: #222222;
+			color: $color-grey;
 			font-size: 16px;
 			line-height: $height-mobile;
 		}
 	}
+}
+
+.light .menuButton span {
+	color: $color-grey;
 }
 
 .menuOpen nav {
@@ -235,7 +257,7 @@ $nav-mobile-width: 80%;
 		transition: all 0.15s;
 
 		@media screen and (max-width: $landscape-mobile) {
-			background-color: #222222;
+			background-color: $color-grey;
 		}
 	}
 
@@ -246,10 +268,18 @@ $nav-mobile-width: 80%;
 	}
 }
 
+.light .menuBars div {
+	background-color: $color-grey;
+}
+
+.menuOpen .menuBars div {
+	background-color: #ffffff;
+}
+
 .shade {
 	height: 100%;
 	width: 100%;
-	background-color: rgba(0, 0, 0, 0.7);
+	background-color: rgba(0, 0, 0, 0.85);
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -257,22 +287,23 @@ $nav-mobile-width: 80%;
 	animation-duration: 0.15s;
 	animation-fill-mode: forwards;
 	animation-timing-function: linear;
+	animation-delay: 0.15s;
 	animation-name: shadeFadeOut;
 	overflow: hidden;
 }
 
 .menuOpen .shade {
 	animation-name: shadeFadeIn;
+	animation-delay: 0s;
 }
 
 .socials {
 	display: flex;
-	position: fixed;
+	position: absolute;
 	right: 0;
 	bottom: 32px;
 	left: 0;
 	justify-content: center;
-	z-index: 2;
 
 	@media screen and (max-width: $landscape-mobile) {
 		display: none;

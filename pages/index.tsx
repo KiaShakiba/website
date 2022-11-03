@@ -1,34 +1,45 @@
 import type { NextPage } from 'next';
+import Link from 'next/link';
 import { useState } from 'react';
 import Image from 'next/image';
+import { isImageLoaded } from '../lib/utils';
 import Layout from '../components/layout';
 import Loading from '../components/loading';
-import Header from '../components/header';
+import Header, { Pages } from '../components/header';
 import styles from '../styles/home.module.scss';
 
 export default function Home() {
-	const [loading, setLoading] = useState<boolean>(true);
+	const IMAGE_PATH: string = '/images/background.jpg';
+	const imageLoaded: boolean = isImageLoaded(IMAGE_PATH);
+
+	const [loading, setLoading] = useState<boolean>(!imageLoaded);
 
 	let classes: Array<string> = [styles.background];
 
-	if (!loading) {
+	if (loading) {
+		classes.push(styles.loading);
+	} else {
 		classes.push(styles.show);
 	}
 
 	const handleLoaded = () => {
+		if (!loading) return;
 		setTimeout(() => setLoading(false), 1500);
 	};
 
 	return (
 		<Layout>
-			{loading && <Loading />}
+			{(() => {
+				if (loading) return <Loading />;
+			})()}
 
-			<Header />
+			<Header theme='dark' />
 
 			<main className={styles.main}>
 				<div className={classes.join(' ')}>
 					<Image
-						src='/images/background.jpg'
+						src={IMAGE_PATH}
+						alt='Background image'
 						layout='fill'
 						quality={100}
 						objectFit='cover'
@@ -37,9 +48,13 @@ export default function Home() {
 
 					<div></div>
 				</div>
-			</main>
 
-			<footer className={styles.footer}></footer>
+				<div className={styles.bottomBar}>
+					<Link href={Pages.CV}>CV</Link>
+					<Link href={Pages.ABOUT}>ABOUT</Link>
+					<Link href={Pages.PHOTOS}>PHOTOS</Link>
+				</div>
+			</main>
 		</Layout>
 	);
 }

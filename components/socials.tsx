@@ -31,16 +31,14 @@ const socials: Array<Social> = [
 
 export function getSocial(social: Social): React.ReactNode {
 	return (
-		<Link href={social.href} key={social.href}>
-			<a target='_blank' className={`${styles.social} ${social.className}`}>
-				<social.icon />
-			</a>
+		<Link href={social.href} className={`${styles.social} ${social.className}`} target='_blank' key={social.href}>
+			<social.icon />
 		</Link>
 	);
 }
 
 export type Social = {
-	icon: React.Component;
+	icon: React.ElementType;
 	href: string;
 	className: string;
 };
