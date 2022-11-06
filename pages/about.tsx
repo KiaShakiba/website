@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 import Loading from '../components/loading';
 import Header from '../components/header';
 
-import styles from '../styles/home.module.scss';
+import styles from '../styles/about.module.scss';
 
 export default function About() {
 	return (
