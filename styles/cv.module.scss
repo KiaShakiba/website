@@ -1,2 +1,5 @@
+@import './header.module';
+
 .main {
+	@extend .header-pad;
 }
