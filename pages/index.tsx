@@ -50,7 +50,7 @@ export default function Home() {
 				</div>
 
 				<div className={styles.bottomBar}>
-					<Link href={Pages.CV}>CV</Link>
+					<Link href={Pages.RESEARCH}>RESEARCH</Link>
 					<Link href={Pages.ABOUT}>ABOUT</Link>
 					<Link href={Pages.PHOTOS}>PHOTOS</Link>
 				</div>

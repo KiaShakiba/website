@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import socials, { getSocial } from './socials';
 import Close from '../icons/close.svg';
@@ -7,7 +7,7 @@ import styles from '../styles/header.module.scss';
 export enum Pages {
 	HOME = '/',
 	ABOUT = '/about',
-	CV = '/cv',
+	RESEARCH = '/research',
 	PHOTOS = '/photos',
 	CONTACT = '/contact'
 }
@@ -16,8 +16,45 @@ type Props = {
 	theme: 'light' | 'dark';
 };
 
+const SHRINK_SCROLL = 48;
+
 export default function Header({ theme }: Props) {
 	const [menuOpen, setMenuOpen] = useState(false);
+	const [menuShrink, setMenuShrink] = useState(false);
+
+	const handleKeydown = useCallback((evt: KeyboardEvent) => {
+		if (evt.which === 27) {
+			setMenuOpen(false);
+		}
+	}, []);
+
+	const handleScroll = useCallback((evt: Event) => {
+		if (window.scrollY <= SHRINK_SCROLL) {
+			setMenuShrink(false);
+		}
+
+		if (window.scrollY > SHRINK_SCROLL) {
+			setMenuShrink(true);
+		}
+	}, []);
+
+	useEffect(() => {
+		if (menuOpen) {
+			document.body.style.overflow = 'hidden';
+		} else {
+			document.body.style.overflow = '';
+		}
+	}, [menuOpen]);
+
+	useEffect(() => {
+		window.addEventListener('keydown', handleKeydown);
+		window.addEventListener('scroll', handleScroll);
+
+		return () => {
+			window.removeEventListener('keydown', handleKeydown);
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, []);
 
 	let classes = [
 		styles.header,
@@ -28,55 +65,55 @@ export default function Header({ theme }: Props) {
 		classes.push(styles.menuOpen);
 	}
 
-	const handleKeydown = (evt: KeyboardEvent) => {
-		if (evt.which === 27) {
-			setMenuOpen(false);
-		}
+	if (menuShrink) {
+		classes.push(styles.menuShrink);
 	}
 
-	useEffect(() => {
-		window.addEventListener('keydown', handleKeydown);
-
-		return () => {
-			window.removeEventListener('keydown', handleKeydown);
-		};
-	}, []);
-
 	return (
-		<header className={classes.join(' ')}>
-			<Link href={Pages.CONTACT} className={styles.contact}>CONTACT</Link>
+		<>
+			<header className={classes.join(' ')}>
+				<Link href={Pages.CONTACT} className={styles.contact}>CONTACT</Link>
 
-			<button className={styles.menuButton} onClick={() => setMenuOpen(!menuOpen)}>
-				<span>MENU</span>
+				<button className={styles.menuButton} onClick={() => setMenuOpen(!menuOpen)}>
+					<span>MENU</span>
 
-				<div className={styles.menuBars}>
-					<div></div>
-					<div></div>
-					<div></div>
-				</div>
-			</button>
-
-			<nav>
-				<button className={styles.closeMenu} onClick={() => setMenuOpen(false)}>
-					<Close />
+					<div className={styles.menuBars}>
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
 				</button>
 
-				{(() => {
-					return Object.entries(Pages).map((page, i) => {
-						return (
-							<Link href={page[1]} className={styles.navLink} key={i}>{page[0]}</Link>
-						);
-					});
-				})()}
+				<nav>
+					<button className={styles.closeMenu} onClick={() => setMenuOpen(false)}>
+						<Close />
+					</button>
 
-				<div className={styles.socialsMobile}>{socials.map(getSocial)}</div>
-			</nav>
+					{(() => {
+						return Object.entries(Pages).map((page, i) => {
+							return (
+								<Link href={page[1]} className={styles.navLink} key={i}>{page[0]}</Link>
+							);
+						});
+					})()}
 
-			<div className={styles.shade}
-				onClick={() => setMenuOpen(false)}>
+					<div className={styles.socialsMobile}>{socials.map(getSocial)}</div>
+				</nav>
 
-				<div className={styles.socials}>{socials.map(getSocial)}</div>
-			</div>
-		</header>
+				<div className={styles.shade}
+					onClick={() => setMenuOpen(false)}>
+
+					<div className={styles.socials}>{socials.map(getSocial)}</div>
+				</div>
+			</header>
+
+			{(() => {
+				if (theme === 'light') {
+					return (
+						<div className={styles.placeholder}></div>
+					);
+				}
+			})()}
+		</>
 	);
 }
