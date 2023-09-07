@@ -13,6 +13,7 @@ type Props = {
 export default function Photos(props: Props) {
 	const containerRef = useRef<HTMLDivElement>(null);
 
+	const [visible, setVisible] = useState(false);
 	const [columns, setColumns] = useState(4);
 	const [galleryIndex, setGalleryIndex] = useState(-1);
 
@@ -31,6 +32,8 @@ export default function Photos(props: Props) {
 		} else {
 			setColumns(4);
 		}
+
+		setVisible(true);
 	}, []);
 
 	useEffect(() => {
@@ -52,6 +55,8 @@ export default function Photos(props: Props) {
 	return (
 		<div ref={containerRef} className={styles.container}>
 			{(() => {
+				if (!visible) return;
+
 				return grouped.map((group, i) => {
 					let photoColumn = group.map((photo, j) => {
 						let index = i + j * columns;

@@ -10,13 +10,13 @@ import styles from '../styles/photos.module.scss';
 
 const PHOTOS = [
 	{ title: 'Bird', src: '/images/background-bird.png' },
-	{ title: 'Image', src: '/images/background.jpg' },
+	{ title: 'Yosemite', src: '/images/background-yosemite.jpg' },
 	{ title: 'Image', src: '/images/background-portrait.jpg' },
 	{ title: 'Image', src: '/images/background-bird.png' },
-	{ title: 'Image', src: '/images/background.jpg' },
+	{ title: 'Image', src: '/images/background-yosemite.jpg' },
 	{ title: 'Image', src: '/images/background-portrait.jpg' },
 	{ title: 'Image', src: '/images/background-bird.png' },
-	{ title: 'Image', src: '/images/background.jpg' },
+	{ title: 'Image', src: '/images/background-yosemite.jpg' },
 	{ title: 'Image', src: '/images/background-portrait.jpg' },
 ];
 

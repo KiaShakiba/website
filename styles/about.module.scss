@@ -1,2 +1,125 @@
+@import './variables';
+
 .main {
+}
+
+.container {
+	width: $widescreen;
+	margin: 32px auto;
+	display: flex;
+
+	@media screen and (max-width: $widescreen) {
+		width: $landscape-tablet;
+	}
+
+	@media screen and (max-width: $landscape-tablet) {
+		width: $portrait-tablet;
+	}
+
+	@media screen and (max-width: $portrait-tablet) {
+		width: $landscape-mobile;
+		flex-direction: column;
+	}
+
+	@media screen and (max-width: $landscape-mobile) {
+		width: $portrait-mobile;
+	}
+
+	@media screen and (max-width: $portrait-mobile) {
+		width: 100%;
+	}
+}
+
+.leftContainer {
+	flex: 0 0 auto;
+}
+
+.rightContainer {
+	flex: 1 1 auto;
+	margin-left: 24px;
+
+	@media screen and (max-width: $portrait-tablet) {
+		margin: 0 16px;
+	}
+}
+
+.imageContainer {
+	height: 480px;
+	width: 480px;
+	position: relative;
+
+	@media screen and (max-width: $widescreen) {
+		height: 320px;
+		width: 320px;
+	}
+
+	@media screen and (max-width: $portrait-tablet) {
+		height: 400px;
+		width: 100%;
+	}
+}
+
+.tags {
+	margin-top: 4px;
+	text-align: right;
+
+	@media screen and (max-width: $portrait-mobile) {
+		padding: 0 8px;
+	}
+}
+
+.tags span {
+	color: $color-grey;
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: 300;
+	text-transform: uppercase;
+
+	@media screen and (max-width: $portrait-tablet) {
+		font-size: 14px;
+	}
+}
+
+.tags span:nth-child(n + 2)::before {
+	content: '|';
+	margin: 0 8px;
+}
+
+.rightContainer h1, .mobileNameContainer h1 {
+	color: $color-grey;
+	font-size: 48px;
+	line-height: 52px;
+	font-weight: 300;
+	text-transform: uppercase;
+}
+
+.rightContainer h1 {
+	@media screen and (max-width: $portrait-tablet) {
+		display: none;
+	}
+}
+
+.mobileNameContainer {
+	width: 100%;
+	margin-bottom: 16px;
+	padding: 0 8px;
+	display: none;
+
+	@media screen and (max-width: $portrait-tablet) {
+		display: inline-block;
+	}
+}
+
+.container p {
+	color: $color-grey;
+	font-size: 18px;
+	line-height: 26px;
+	margin-top: 24px;
+}
+
+.container svg {
+	height: 16px;
+	width: 16px;
+	margin: 3px;
+	vertical-align: top;
 }
