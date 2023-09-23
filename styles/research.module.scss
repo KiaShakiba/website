@@ -21,6 +21,11 @@
 		color: $color-grey;
 		font-size: 18px;
 		line-height: 26px;
+
+		a {
+			color: $color-grey;
+			text-decoration: underline;
+		}
 	}
 
 	ul {
