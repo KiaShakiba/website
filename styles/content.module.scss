@@ -1,0 +1,26 @@
+@import './variables';
+
+.container {
+	width: $widescreen;
+	margin: 32px auto;
+
+	@media screen and (max-width: $widescreen) {
+		width: $landscape-tablet;
+	}
+
+	@media screen and (max-width: $landscape-tablet) {
+		width: $portrait-tablet;
+	}
+
+	@media screen and (max-width: $portrait-tablet) {
+		width: $landscape-mobile;
+	}
+
+	@media screen and (max-width: $landscape-mobile) {
+		width: $portrait-mobile;
+	}
+
+	@media screen and (max-width: $portrait-mobile) {
+		width: 100%;
+	}
+}

@@ -1,32 +1,10 @@
 @import './variables';
 
-.main {
-}
-
 .container {
-	width: $widescreen;
-	margin: 32px auto;
 	display: flex;
 
-	@media screen and (max-width: $widescreen) {
-		width: $landscape-tablet;
-	}
-
-	@media screen and (max-width: $landscape-tablet) {
-		width: $portrait-tablet;
-	}
-
 	@media screen and (max-width: $portrait-tablet) {
-		width: $landscape-mobile;
 		flex-direction: column;
-	}
-
-	@media screen and (max-width: $landscape-mobile) {
-		width: $portrait-mobile;
-	}
-
-	@media screen and (max-width: $portrait-mobile) {
-		width: 100%;
 	}
 }
 
@@ -115,6 +93,11 @@
 	font-size: 18px;
 	line-height: 26px;
 	margin-top: 24px;
+
+	a {
+		color: $color-grey;
+		text-decoration: underline;
+	}
 }
 
 .container svg {

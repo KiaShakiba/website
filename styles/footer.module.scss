@@ -1,0 +1,30 @@
+@import './variables';
+
+.footer {
+	margin: 8px 0;
+	padding: 4px 16px 0;
+	border-top: 1px solid #dddddd;
+	display: flex;
+	flex: 0 0 auto;
+	align-items: center;
+}
+
+.socials {
+	display: flex;
+	flex: 0 0 auto;
+
+	a {
+		margin: 0;
+	}
+}
+
+.copyright {
+	flex: 1 1 auto;
+	text-align: right;
+
+	span {
+		color: $color-grey;
+		font-size: 14px;
+		line-height: 18px;
+	}
+}

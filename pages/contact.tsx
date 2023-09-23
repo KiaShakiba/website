@@ -1,21 +1,19 @@
-import type { NextPage } from 'next';
-import { useState } from 'react';
-import Image from 'next/image';
 import Layout from '../components/layout';
-import Loading from '../components/loading';
-import Header from '../components/header';
+import Content from '../components/content';
+import At from '../icons/at.svg';
 
-import styles from '../styles/home.module.scss';
+import styles from '../styles/contact.module.scss';
 
-export default function About() {
+export default function Contact() {
 	return (
 		<Layout>
-			<Header theme='light' />
+			<Content className={styles.container}>
+				<h1>Contact</h1>
 
-			<main className={styles.main}>
-			</main>
-
-			<footer className={styles.footer}></footer>
+				<div>
+					<p>Please contact me via email at: kia.shakiba<At />mail.utoronto.ca</p>
+				</div>
+			</Content>
 		</Layout>
 	);
 }

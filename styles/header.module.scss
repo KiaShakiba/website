@@ -124,6 +124,7 @@ $nav-mobile-width: 80%;
 .placeholder {
 	height: $height + $top-space * 2;
 	width: 100%;
+	flex: 0 0 auto;
 	transition: height 0.15s ease-out;
 
 	@media screen and (max-width: $landscape-mobile) {

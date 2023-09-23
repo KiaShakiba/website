@@ -1,16 +1,16 @@
 import Link from 'next/link';
 import styles from '../styles/socials.module.scss';
 
-import Twitter from '../icons/twitter.svg';
+import Github from '../icons/github.svg';
 import Instagram from '../icons/instagram.svg';
-import Vero from '../icons/vero.svg';
+import Mastodon from '../icons/mastodon.svg';
 import Linkedin from '../icons/linkedin.svg';
 
 const socials: Array<Social> = [
 	{
-		icon: Twitter,
-		href: 'https://twitter.com/kiashakiba',
-		className: styles.twitter
+		icon: Github,
+		href: 'https://github.com/KiaShakiba/',
+		className: styles.github
 	},
 	{
 		icon: Instagram,
@@ -18,9 +18,9 @@ const socials: Array<Social> = [
 		className: styles.instagram
 	},
 	{
-		icon: Vero,
-		href: 'https://vero.co/kiashakiba',
-		className: styles.vero
+		icon: Mastodon,
+		href: 'https://mastodon.social/@kiashakiba',
+		className: styles.mastodon
 	},
 	{
 		icon: Linkedin,

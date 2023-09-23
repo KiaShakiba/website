@@ -1,0 +1,29 @@
+@import './variables';
+
+.container {
+	@media screen and (max-width: $portrait-tablet) {
+		padding: 0 16px;
+	}
+
+	h1 {
+		color: $color-grey;
+		font-size: 48px;
+		line-height: 52px;
+		font-weight: 300;
+		text-transform: uppercase;
+	}
+
+	p, ul {
+		margin-top: 24px;
+	}
+
+	p, li {
+		color: $color-grey;
+		font-size: 18px;
+		line-height: 26px;
+	}
+
+	ul {
+		list-style-position: inside;
+	}
+}

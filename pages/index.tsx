@@ -1,4 +1,3 @@
-import type { NextPage } from 'next';
 import Link from 'next/link';
 import { useState } from 'react';
 import Image from 'next/image';
@@ -28,14 +27,12 @@ export default function Home() {
 	};
 
 	return (
-		<Layout>
+		<Layout fullscreen>
 			{(() => {
 				if (loading) return <Loading />;
 			})()}
 
-			<Header theme='dark' />
-
-			<main className={styles.main}>
+			<div className={styles.container}>
 				<div className={classes.join(' ')}>
 					<Image
 						src={IMAGE_PATH}
@@ -54,7 +51,7 @@ export default function Home() {
 					<Link href={Pages.ABOUT}>ABOUT</Link>
 					<Link href={Pages.PHOTOS}>PHOTOS</Link>
 				</div>
-			</main>
+			</div>
 		</Layout>
 	);
 }

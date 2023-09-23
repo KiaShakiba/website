@@ -1,0 +1,36 @@
+@import './variables';
+
+.container {
+	@media screen and (max-width: $portrait-tablet) {
+		padding: 0 16px;
+	}
+
+	h1 {
+		color: $color-grey;
+		font-size: 48px;
+		line-height: 52px;
+		font-weight: 300;
+		text-transform: uppercase;
+	}
+
+	div {
+		width: 100%;
+		margin-top: 128px;
+		text-align: center;
+
+		p {
+			color: $color-grey;
+			font-size: 22px;
+			line-height: 26px;
+			display: inline-block;
+		}
+
+		svg {
+			height: 18px;
+			width: 18px;
+			margin: 4px 2px;
+			fill: $color-grey;
+			vertical-align: top;
+		}
+	}
+}
