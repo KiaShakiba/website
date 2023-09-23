@@ -74,6 +74,10 @@ export default function Header({ theme }: Props) {
 			<header className={classes.join(' ')}>
 				<Link href={Pages.CONTACT} className={styles.contact}>CONTACT</Link>
 
+				<div className={styles.name}>
+					<Link href={Pages.HOME}>Kia Shakiba</Link>
+				</div>
+
 				<button className={styles.menuButton} onClick={() => setMenuOpen(!menuOpen)}>
 					<span>MENU</span>
 
