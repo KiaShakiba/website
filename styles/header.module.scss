@@ -171,6 +171,11 @@ $nav-mobile-width: 80%;
 	right: 0;
 	left: 0;
 
+	@media screen and (max-width: $landscape-mobile) {
+		top: $top-space-mobile;
+		position: absolute;
+	}
+
 	a {
 		color: #ffffff;
 		font-size: 18px;
