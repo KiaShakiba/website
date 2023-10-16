@@ -15,7 +15,7 @@ export default function Research() {
 
 				<ul>
 					<li>Eviction policy-specific miss ratio curve generation</li>
-					<li>Efficient eviction policy switching</li>
+					<li>Efficient online eviction policy switching</li>
 					<li>Resource allocation on multi-tenant caching servers</li>
 				</ul>
 

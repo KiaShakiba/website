@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { isImageLoaded } from '../lib/utils';
 import Layout from '../components/layout';
 import Loading from '../components/loading';
-import Header, { Pages } from '../components/header';
+import { Pages } from '../components/header';
 import styles from '../styles/home.module.scss';
 
 export default function Home() {

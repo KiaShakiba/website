@@ -23,12 +23,12 @@ export default function Header({ theme }: Props) {
 	const [menuShrink, setMenuShrink] = useState(false);
 
 	const handleKeydown = useCallback((evt: KeyboardEvent) => {
-		if (evt.which === 27) {
+		if (evt.key === 'Escape') {
 			setMenuOpen(false);
 		}
 	}, []);
 
-	const handleScroll = useCallback((evt: Event) => {
+	const handleScroll = useCallback(() => {
 		if (window.scrollY <= SHRINK_SCROLL) {
 			setMenuShrink(false);
 		}
@@ -54,7 +54,7 @@ export default function Header({ theme }: Props) {
 			window.removeEventListener('keydown', handleKeydown);
 			window.removeEventListener('scroll', handleScroll);
 		};
-	}, []);
+	}, [handleKeydown, handleScroll]);
 
 	let classes = [
 		styles.header,

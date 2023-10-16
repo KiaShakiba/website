@@ -29,7 +29,7 @@ export default function Photos(props: Props) {
 		}
 
 		props.next();
-	}, [props.next, index, photos]);
+	}, [props, index, photos]);
 
 	const prev = useCallback(() => {
 		if (index <= 0) {
@@ -37,15 +37,15 @@ export default function Photos(props: Props) {
 		}
 
 		props.prev();
-	}, [props.prev, index]);
+	}, [props, index]);
 
 	const handleKeydown = useCallback((evt: KeyboardEvent) => {
-		switch (evt.which) {
-			case 27: return close();
-			case 39: return next();
-			case 37: return prev();
+		switch (evt.key) {
+			case 'Escape': return close();
+			case 'ArrowRight': return next();
+			case 'ArrowLeft': return prev();
 		}
-	}, []);
+	}, [close, next, prev]);
 
 	useEffect(() => {
 		setLoading(true);
@@ -59,7 +59,7 @@ export default function Photos(props: Props) {
 			window.removeEventListener('keydown', handleKeydown);
 			document.body.style.overflow = '';
 		};
-	}, []);
+	}, [handleKeydown]);
 
 	return (
 		<div className={styles.container}>

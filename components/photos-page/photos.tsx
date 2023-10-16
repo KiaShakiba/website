@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import Image from 'next/image';
 import elementResizeDetectorMaker from 'element-resize-detector';
 import Gallery from '../gallery';
 import Photo, { PhotoItem } from './photo';
@@ -50,7 +49,7 @@ export default function Photos(props: Props) {
 				erd.removeAllListeners(containerRef.current);
 			}
 		};
-	}, [containerRef]);
+	}, [containerRef, handleResize]);
 
 	return (
 		<div ref={containerRef} className={styles.container}>

@@ -1,4 +1,3 @@
-import { useState, useRef, useEffect, useCallback, CSSProperties } from 'react';
 import useImageDimensions from '../../lib/hooks/image-dimensions';
 import LoadingSpinner from '../loading-spinner';
 
