@@ -1,14 +1,17 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import Image from 'next/image';
+import getConfig from 'next/config';
 import { isImageLoaded } from '../lib/utils';
 import Layout from '../components/layout';
 import Loading from '../components/loading';
 import { Pages } from '../components/header';
 import styles from '../styles/home.module.scss';
 
+const { assetPrefix } = getConfig();
+
 export default function Home() {
-	const IMAGE_PATH: string = '/images/background-yosemite.jpg';
+	const IMAGE_PATH: string = `${assetPrefix}/images/background-yosemite.jpg`;
 	const imageLoaded: boolean = isImageLoaded(IMAGE_PATH);
 
 	const [loading, setLoading] = useState<boolean>(!imageLoaded);
