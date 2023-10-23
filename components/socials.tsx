@@ -19,7 +19,7 @@ const socials: Array<Social> = [
 	},
 	{
 		icon: Mastodon,
-		href: 'https://mastodon.social/@kiashakiba',
+		href: 'https://mstdn.ca/@kia',
 		className: styles.mastodon
 	},
 	{
