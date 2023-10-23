@@ -3,7 +3,7 @@ const nextConfig = {
 	reactStrictMode: true,
 	swcMinify: true,
 
-	assetPrefix: '/website',
+	assetPrefix: '/website/',
 
 	webpack(config) {
 		config.module.rules.push({
