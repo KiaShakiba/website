@@ -3,6 +3,8 @@ const nextConfig = {
 	reactStrictMode: true,
 	swcMinify: true,
 
+	basePath: '/website',
+
 	images: {
 		unoptimized: true
 	},
