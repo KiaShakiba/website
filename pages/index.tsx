@@ -8,12 +8,10 @@ import Loading from '../components/loading';
 import { Pages } from '../components/header';
 import styles from '../styles/home.module.scss';
 
-const { assetPrefix } = getConfig();
+const { basePath } = getConfig();
 
 export default function Home() {
-	console.log(assetPrefix);
-
-	const IMAGE_PATH: string = `/website/images/background-yosemite.jpg`;
+	const IMAGE_PATH: string = `${basePath || ''}/images/background-yosemite.jpg`;
 	const imageLoaded: boolean = isImageLoaded(IMAGE_PATH);
 
 	const [loading, setLoading] = useState<boolean>(!imageLoaded);
