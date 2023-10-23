@@ -11,7 +11,9 @@ import styles from '../styles/home.module.scss';
 const { assetPrefix } = getConfig();
 
 export default function Home() {
-	const IMAGE_PATH: string = `/images/background-yosemite.jpg`;
+	console.log(assetPrefix);
+
+	const IMAGE_PATH: string = `/website/images/background-yosemite.jpg`;
 	const imageLoaded: boolean = isImageLoaded(IMAGE_PATH);
 
 	const [loading, setLoading] = useState<boolean>(!imageLoaded);
