@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { getImagePath } from '../../lib/utils';
+import { useState, useCallback } from 'react';
+import { isClient, getImagePath } from '../../lib/utils';
 import LoadingSpinner from '../loading-spinner';
 
 import styles from '../../styles/photos-page/photo.module.scss';
@@ -13,10 +13,16 @@ export default function Photo(props: Props) {
 	const { photo } = props;
 	const [loading, setLoading] = useState(true);
 
+	const openGallery = useCallback(() => {
+		if (isClient && window.innerWidth > 640) {
+			props.openGallery();
+		}
+	}, [props]);
+
 	return (
 		<div
 			className={styles.container}
-			onClick={props.openGallery}
+			onClick={openGallery}
 		>
 			{(() => {
 				if (loading) {

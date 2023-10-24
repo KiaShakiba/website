@@ -1,3 +1,5 @@
+@import '../variables';
+
 .container {
 	min-height: 260px;
 	width: 100%;
@@ -7,6 +9,11 @@
 	position: relative;
 	transition: height 0.15s ease-out, width 0.15s ease-out;
 	overflow: hidden;
+	cursor: pointer;
+
+	@media screen and (max-width: $landscape-mobile) {
+		cursor: default;
+	}
 
 	img {
 		width: 100%;
