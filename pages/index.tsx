@@ -1,14 +1,12 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import Image from 'next/image';
-import getConfig from 'next/config';
+import { basePath } from '../next.config';
 import { isImageLoaded } from '../lib/utils';
 import Layout from '../components/layout';
 import Loading from '../components/loading';
 import { Pages } from '../components/header';
 import styles from '../styles/home.module.scss';
-
-const { basePath } = getConfig();
 
 export default function Home() {
 	const IMAGE_PATH: string = `${basePath || ''}/images/background-yosemite.jpg`;
