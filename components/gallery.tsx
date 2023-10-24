@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
-import { getImagePath } from '../../lib/utils';
+import { getImagePath } from '../lib/utils';
 import LoadingSpinner from './loading-spinner';
 import { PhotoItem } from './photos-page/photo';
 import Close from '../icons/close.svg';
