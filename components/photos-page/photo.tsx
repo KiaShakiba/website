@@ -1,3 +1,4 @@
+import { getImagePath } from '../../lib/utils';
 import useImageDimensions from '../../lib/hooks/image-dimensions';
 import LoadingSpinner from '../loading-spinner';
 
@@ -26,7 +27,7 @@ export default function Photo(props: Props) {
 			})()}
 
 			<img
-				src={photo.src}
+				src={getImagePath(photo.src)}
 				alt={photo.title}
 			/>
 

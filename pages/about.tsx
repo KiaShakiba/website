@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { getImagePath } from '../lib/utils';
 import Layout from '../components/layout';
 import Content from '../components/content';
 import { Pages } from '../components/header';
@@ -17,7 +18,7 @@ export default function About() {
 				<div className={styles.leftContainer}>
 					<div className={styles.imageContainer}>
 						<Image
-							src='/images/kia-compressed.jpg'
+							src={getImagePath('kia-compressed.jpg')}
 							alt='Kia Shakiba'
 							layout='fill'
 							quality={100}
