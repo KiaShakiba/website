@@ -1,5 +1,5 @@
+import { useState } from 'react';
 import { getImagePath } from '../../lib/utils';
-import useImageDimensions from '../../lib/hooks/image-dimensions';
 import LoadingSpinner from '../loading-spinner';
 
 import styles from '../../styles/photos-page/photo.module.scss';
@@ -11,7 +11,7 @@ type Props = {
 
 export default function Photo(props: Props) {
 	const { photo } = props;
-	const [loading] = useImageDimensions(photo.src);
+	const [loading, setLoading] = useState(true);
 
 	return (
 		<div
@@ -29,6 +29,7 @@ export default function Photo(props: Props) {
 			<img
 				src={getImagePath(photo.src)}
 				alt={photo.title}
+				onLoad={() => setLoading(false)}
 			/>
 
 			<div className={styles.titleContainer}>
