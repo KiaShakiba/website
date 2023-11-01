@@ -16,13 +16,20 @@ export default function Layout(props: React.PropsWithChildren<Props>) {
 
 	let theme: 'dark' | 'light' = props.fullscreen ? 'dark' : 'light';
 
+	const title = 'Kia Shakiba';
+	const description = 'Kia Shakiba - Cloud cache researcher | Ph.D. Candiadate';
+
 	return (
 		<>
 			<Head>
-				<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0' />
-				<meta name='description' content='' />
+				<title>{title}</title>
 
-				<title>Kia Shakiba</title>
+				<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0' />
+				<meta name='description' content={description} key='desc' />
+
+				<meta property='og:title' content='Kia Shakiba' />
+				<meta property='og:description' content={description} />
+				<meta property='og:image' content='https://kiashakiba.ca/images/kia-compressed.jpg' />
 			</Head>
 
 			<main className={classes.join(' ')}>

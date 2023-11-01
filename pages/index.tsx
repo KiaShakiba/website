@@ -23,7 +23,7 @@ export default function Home() {
 
 	const handleLoaded = () => {
 		if (!loading) return;
-		setTimeout(() => setLoading(false), 1500);
+		setTimeout(() => setLoading(false), 1000);
 	};
 
 	return (

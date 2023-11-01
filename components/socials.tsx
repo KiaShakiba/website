@@ -31,7 +31,13 @@ const socials: Array<Social> = [
 
 export function getSocial(social: Social): React.ReactNode {
 	return (
-		<Link href={social.href} className={`${styles.social} ${social.className}`} target='_blank' key={social.href}>
+		<Link
+			href={social.href}
+			className={`${styles.social} ${social.className}`}
+			target='_blank'
+			rel='me'
+			key={social.href}
+		>
 			<social.icon />
 		</Link>
 	);
