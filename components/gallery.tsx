@@ -92,7 +92,7 @@ export default function Photos(props: Props) {
 
 				<Image
 					src={getImagePath(photos[index].src)}
-					alt={photos[index].title}
+					alt={photos[index].title || photos[index].location || 'Image'}
 					style={{ objectFit: 'contain' }}
 					quality={100}
 					onLoadingComplete={() => setLoading(false)}
