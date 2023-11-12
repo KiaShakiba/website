@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { isClient, getImagePath } from '../../lib/utils';
+import Pin from '../../icons/pin.svg';
 import LoadingSpinner from '../loading-spinner';
 
 import styles from '../../styles/photos-page/photo.module.scss';
@@ -38,14 +39,33 @@ export default function Photo(props: Props) {
 				onLoad={() => setLoading(false)}
 			/>
 
-			<div className={styles.titleContainer}>
-				<span>{photo.title}</span>
-			</div>
+			{(() => {
+				if (photo.title) {
+					return (
+						<div className={styles.titleContainer}>
+							<span>{photo.title}</span>
+						</div>
+					);
+				}
+			})()}
+
+			{(() => {
+				if (photo.location) {
+					return (
+						<div className={styles.locationContainer}>
+							<span>{photo.location}</span>
+							<Pin />
+						</div>
+					);
+				}
+			})()}
 		</div>
 	);
 }
 
 export type PhotoItem = {
-	title: string;
+	title?: string;
+	location?: string;
+
 	src: string;
 };
