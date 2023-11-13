@@ -87,8 +87,7 @@ export default function Photos(props: Props) {
 						<Gallery
 							photos={photos}
 							index={galleryIndex}
-							next={() => setGalleryIndex(galleryIndex + 1)}
-							prev={() => setGalleryIndex(galleryIndex - 1)}
+							setIndex={setGalleryIndex}
 							close={() => setGalleryIndex(-1)}
 						/>
 					);

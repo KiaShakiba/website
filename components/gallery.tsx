@@ -13,9 +13,7 @@ type Props = {
 	photos: Array<PhotoItem>;
 	index: number;
 
-	next: () => void;
-	prev: () => void;
-
+	setIndex: (index: number) => void;
 	close: () => void;
 };
 
@@ -28,11 +26,11 @@ export default function Photos(props: Props) {
 	const next = useCallback((evt: React.MouseEvent | KeyboardEvent) => {
 		evt.stopPropagation();
 
-		if (index >= photos.length) {
+		if (index >= photos.length - 1) {
 			return;
 		}
 
-		props.next();
+		props.setIndex(index + 1);
 	}, [props, index, photos]);
 
 	const prev = useCallback((evt: React.MouseEvent | KeyboardEvent) => {
@@ -42,7 +40,7 @@ export default function Photos(props: Props) {
 			return;
 		}
 
-		props.prev();
+		props.setIndex(index - 1);
 	}, [props, index]);
 
 	const handleKeydown = useCallback((evt: KeyboardEvent) => {
@@ -57,18 +55,38 @@ export default function Photos(props: Props) {
 		evt.stopPropagation();
 	}, []);
 
+	const handlePopState = useCallback((evt: PopStateEvent) => {
+		/*if (!props.setIndex) return;
+
+		let index = evt.state.photoId ? getPhotoIndex(photos, evt.state.photoId) : -1;
+		props.setIndex(index);*/
+	}, [props, photos]);
+
 	useEffect(() => {
 		// @ts-ignore
 		let url = new URL(location);
+		let photoId = getPhotoId(photos[index]);
 
-		url.searchParams.set('p', getPhotoId(photos[index]));
-		history.pushState({}, '', url);
+		url.searchParams.set('p', photoId);
+		history.pushState({ photoId }, '', url);
+	}, [index, photos]);
 
+	useEffect(() => {
 		return () => {
+			// @ts-ignore
+			let url = new URL(location);
 			url.searchParams.delete('p');
 			history.pushState({}, '', url);
 		};
-	}, [index, photos]);
+	}, []);
+
+	useEffect(() => {
+		window.addEventListener('popstate', handlePopState);
+
+		return () => {
+			window.removeEventListener('popstate', handlePopState);
+		};
+	}, [handlePopState]);
 
 	useEffect(() => {
 		document.body.style.overflow = 'hidden';
