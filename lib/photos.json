@@ -1,5 +1,10 @@
 [
 	{
+		"title": "Canada Jay",
+		"location": "Vancouver, BC",
+		"src": "photos/canada-jay.jpg"
+	},
+	{
 		"location": "Vancouver, BC",
 		"src": "photos/vancouver-10.jpg"
 	},
