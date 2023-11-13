@@ -23,6 +23,15 @@ export default function Photos(props: Props) {
 
 	const [loading] = useImageDimensions(getImagePath(photo.src));
 
+	const updateUrl = useCallback((index: number) => {
+		// @ts-ignore
+		let url = new URL(location);
+		let photoId = getPhotoId(photos[index]);
+
+		url.searchParams.set('p', photoId);
+		history.pushState({ photoId }, '', url);
+	}, [photos]);
+
 	const next = useCallback((evt: React.MouseEvent | KeyboardEvent) => {
 		evt.stopPropagation();
 
@@ -31,7 +40,8 @@ export default function Photos(props: Props) {
 		}
 
 		props.setIndex(index + 1);
-	}, [props, index, photos]);
+		updateUrl(index + 1);
+	}, [props, index, photos, updateUrl]);
 
 	const prev = useCallback((evt: React.MouseEvent | KeyboardEvent) => {
 		evt.stopPropagation();
@@ -41,7 +51,8 @@ export default function Photos(props: Props) {
 		}
 
 		props.setIndex(index - 1);
-	}, [props, index]);
+		updateUrl(index - 1);
+	}, [props, index, updateUrl]);
 
 	const handleKeydown = useCallback((evt: KeyboardEvent) => {
 		switch (evt.key) {
@@ -56,20 +67,9 @@ export default function Photos(props: Props) {
 	}, []);
 
 	const handlePopState = useCallback((evt: PopStateEvent) => {
-		/*if (!props.setIndex) return;
-
 		let index = evt.state.photoId ? getPhotoIndex(photos, evt.state.photoId) : -1;
-		props.setIndex(index);*/
+		props.setIndex(index);
 	}, [props, photos]);
-
-	useEffect(() => {
-		// @ts-ignore
-		let url = new URL(location);
-		let photoId = getPhotoId(photos[index]);
-
-		url.searchParams.set('p', photoId);
-		history.pushState({ photoId }, '', url);
-	}, [index, photos]);
 
 	useEffect(() => {
 		return () => {
@@ -79,6 +79,10 @@ export default function Photos(props: Props) {
 			history.pushState({}, '', url);
 		};
 	}, []);
+
+	useEffect(() => {
+		updateUrl(index);
+	}, [updateUrl]);
 
 	useEffect(() => {
 		window.addEventListener('popstate', handlePopState);
