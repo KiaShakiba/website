@@ -16,7 +16,13 @@
 	width: 100%;
 	margin: auto;
 	position: relative;
+	display: flex;
 	overflow: hidden;
+
+	img {
+		max-width: 100%;
+		margin: 0 auto;
+	}
 }
 
 .button {

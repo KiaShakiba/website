@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
-import Image from 'next/image';
+import { useEffect, useCallback } from 'react';
 import { getImagePath } from '../lib/utils';
+import useImageDimensions from '../lib/hooks/image-dimensions';
 import LoadingSpinner from './loading-spinner';
 import { PhotoItem } from './photos-page/photo';
 import Close from '../icons/close.svg';
@@ -20,11 +20,14 @@ type Props = {
 };
 
 export default function Photos(props: Props) {
-	const [loading, setLoading] = useState(true);
-
 	const { photos, index, close } = props;
+	const photo = photos[index];
 
-	const next = useCallback(() => {
+	const [loading] = useImageDimensions(getImagePath(photo.src));
+
+	const next = useCallback((evt: React.MouseEvent | KeyboardEvent) => {
+		evt.stopPropagation();
+
 		if (index >= photos.length) {
 			return;
 		}
@@ -32,7 +35,9 @@ export default function Photos(props: Props) {
 		props.next();
 	}, [props, index, photos]);
 
-	const prev = useCallback(() => {
+	const prev = useCallback((evt: React.MouseEvent | KeyboardEvent) => {
+		evt.stopPropagation();
+
 		if (index <= 0) {
 			return;
 		}
@@ -43,14 +48,16 @@ export default function Photos(props: Props) {
 	const handleKeydown = useCallback((evt: KeyboardEvent) => {
 		switch (evt.key) {
 			case 'Escape': return close();
-			case 'ArrowRight': return next();
-			case 'ArrowLeft': return prev();
+			case 'ArrowRight': return next(evt);
+			case 'ArrowLeft': return prev(evt);
 		}
 	}, [close, next, prev]);
 
-	useEffect(() => {
-		setLoading(true);
+	const handleImageClick = useCallback((evt: React.MouseEvent) => {
+		evt.stopPropagation();
+	}, []);
 
+	useEffect(() => {
 		// @ts-ignore
 		let url = new URL(location);
 
@@ -74,8 +81,8 @@ export default function Photos(props: Props) {
 	}, [handleKeydown]);
 
 	return (
-		<div className={styles.container}>
-			<button className={styles.close} onClick={close}>
+		<div className={styles.container} onClick={close}>
+			<button className={styles.close}>
 				<Close />
 			</button>
 
@@ -99,16 +106,15 @@ export default function Photos(props: Props) {
 							<LoadingSpinner className={styles.loadingContainer} />
 						);
 					}
-				})()}
 
-				<Image
-					src={getImagePath(photos[index].src)}
-					alt={photos[index].title || photos[index].location || 'Image'}
-					style={{ objectFit: 'contain' }}
-					quality={100}
-					onLoadingComplete={() => setLoading(false)}
-					fill
-				/>
+					return (
+						<img
+							src={getImagePath(photo.src)}
+							alt={photo.title || photo.location || 'Image'}
+							onClick={handleImageClick}
+						/>
+					);
+				})()}
 			</div>
 
 			{(() => {
