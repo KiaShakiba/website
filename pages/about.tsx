@@ -18,7 +18,7 @@ export default function About() {
 				<div className={styles.leftContainer}>
 					<div className={styles.imageContainer}>
 						<Image
-							src={getImagePath('kia-compressed.jpg')}
+							src={getImagePath('kia.jpg')}
 							alt='Kia Shakiba'
 							layout='fill'
 							quality={100}

@@ -29,7 +29,7 @@ export default function Layout(props: React.PropsWithChildren<Props>) {
 
 				<meta property='og:title' content='Kia Shakiba' />
 				<meta property='og:description' content={description} />
-				<meta property='og:image' content='https://kiashakiba.ca/images/kia-compressed.jpg' />
+				<meta property='og:image' content='https://kiashakiba.ca/images/kia.jpg' />
 			</Head>
 
 			<main className={classes.join(' ')}>
