@@ -50,7 +50,18 @@ export default function Photos(props: Props) {
 
 	useEffect(() => {
 		setLoading(true);
-	}, [index]);
+
+		// @ts-ignore
+		let url = new URL(location);
+
+		url.searchParams.set('p', getPhotoId(photos[index]));
+		history.pushState({}, '', url);
+
+		return () => {
+			url.searchParams.delete('p');
+			history.pushState({}, '', url);
+		};
+	}, [index, photos]);
 
 	useEffect(() => {
 		document.body.style.overflow = 'hidden';
@@ -114,4 +125,14 @@ export default function Photos(props: Props) {
 			})()}
 		</div>
 	);
+}
+
+export function getPhotoIndex(photos: Array<PhotoItem>, photoId: string): number {
+	return photos.findIndex(photo => photoId === getPhotoId(photo));
+}
+
+export function getPhotoId(photo: PhotoItem): string {
+	return photo.src
+		.replace('photos/', '')
+		.replace('.jpg', '');
 }

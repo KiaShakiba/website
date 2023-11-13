@@ -1,12 +1,13 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import elementResizeDetectorMaker from 'element-resize-detector';
-import Gallery from '../gallery';
+import Gallery, { getPhotoIndex } from '../gallery';
 import Photo, { PhotoItem } from './photo';
 
 import styles from '../../styles/photos-page/photos.module.scss';
 
 type Props = {
 	photos: Array<PhotoItem>;
+	photoId?: string;
 };
 
 export default function Photos(props: Props) {
@@ -34,6 +35,11 @@ export default function Photos(props: Props) {
 
 		setVisible(true);
 	}, []);
+
+	useEffect(() => {
+		let index = props.photoId ? getPhotoIndex(props.photos, props.photoId) : -1;
+		setGalleryIndex(index);
+	}, [props.photos, props.photoId]);
 
 	useEffect(() => {
 		const erd = elementResizeDetectorMaker({
