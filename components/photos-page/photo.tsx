@@ -20,9 +20,15 @@ export default function Photo(props: Props) {
 		}
 	}, [props]);
 
+	const classes = [styles.container];
+
+	if (loading) {
+		classes.push(styles.loading);
+	}
+
 	return (
 		<div
-			className={styles.container}
+			className={classes.join(' ')}
 			onClick={openGallery}
 		>
 			{(() => {
