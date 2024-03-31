@@ -3,6 +3,7 @@
 .container {
 	width: $widescreen;
 	margin: 32px auto;
+	padding: 0 16px;
 
 	@media screen and (max-width: $widescreen) {
 		width: $landscape-tablet;

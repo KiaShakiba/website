@@ -9,9 +9,8 @@
 		"src": "photos/vancouver-10.jpg"
 	},
 	{
-		"location": "Vancouver, BC",
-		"src": "photos/macro-2.jpg"
-
+		"location": "Toronto, ON",
+		"src": "photos/cn-tower.jpg"
 	},
 	{
 		"title": "Common Raven",
@@ -27,6 +26,14 @@
 	{
 		"location": "Yosemite, US",
 		"src": "photos/yosemite-2.jpg"
+	},
+	{
+		"location": "Vancouver, BC",
+		"src": "photos/vancouver-12.jpg"
+	},
+	{
+		"location": "Vancouver, BC",
+		"src": "photos/vancouver-11.jpg"
 	},
 	{
 		"location": "Vancouver, BC",
@@ -95,6 +102,10 @@
 		"title": "Pickerel Frog",
 		"location": "Milton, ON",
 		"src": "photos/pickerel-frog.jpg"
+	},
+	{
+		"location": "Vancouver, BC",
+		"src": "photos/macro-2.jpg"
 	},
 	{
 		"title": "Chickadee",
