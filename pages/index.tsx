@@ -8,7 +8,7 @@ import { Pages } from '../components/header';
 import styles from '../styles/home.module.scss';
 
 export default function Home() {
-	const IMAGE_PATH: string = getImagePath('background-yosemite.jpg');
+	const IMAGE_PATH: string = getImagePath('yosemite.jpg');
 	const imageLoaded: boolean = isImageLoaded(IMAGE_PATH);
 
 	const [loading, setLoading] = useState<boolean>(!imageLoaded);
