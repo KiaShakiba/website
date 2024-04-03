@@ -6,6 +6,10 @@
 	@media screen and (max-width: $portrait-tablet) {
 		flex-direction: column;
 	}
+
+	@media screen and (max-width: $portrait-mobile) {
+		padding: 0;
+	}
 }
 
 .leftContainer {
