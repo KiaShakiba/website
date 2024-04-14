@@ -16,7 +16,8 @@ export default function Publication(props: Props) {
 
 	return (
 		<div className={styles.container}>
-			<Link href={links.page} className={styles.title}>{props.title}</Link>
+			<Link href={links.page} target='_blank'
+				className={styles.title}>{props.title}</Link>
 
 			<div className={styles.authors}>
 				{(() => {
@@ -71,7 +72,8 @@ export default function Publication(props: Props) {
 function getAuthor(author: Author, key: number): React.ReactNode {
 	if (author.link) {
 		return (
-			<Link href={author.link} key={`name-${key}`}>{author.name}</Link>
+			<Link href={author.link} target='_blank'
+				key={`name-${key}`}>{author.name}</Link>
 		);
 	} else {
 		return (
