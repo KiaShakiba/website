@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from '../../styles/research-page/publication.module.scss';
 
 export type Props = {
@@ -15,7 +16,7 @@ export default function Publication(props: Props) {
 
 	return (
 		<div className={styles.container}>
-			<a href={links.page} className={styles.title}>{props.title}</a>
+			<Link href={links.page} className={styles.title}>{props.title}</Link>
 
 			<div className={styles.authors}>
 				{(() => {
@@ -38,7 +39,7 @@ export default function Publication(props: Props) {
 			</div>
 
 			<div className={styles.info}>
-				<a href={conference.link} target='_blank'>{conference.name}</a>
+				<Link href={conference.link} target='_blank'>{conference.name}</Link>
 				<span>{`, ${conference.month}, ${conference.year}, pp. ${pages.start}-${pages.end}`}</span>
 			</div>
 
@@ -70,7 +71,7 @@ export default function Publication(props: Props) {
 function getAuthor(author: Author, key: number): React.ReactNode {
 	if (author.link) {
 		return (
-			<a href={author.link} key={`name-${key}`}>{author.name}</a>
+			<Link href={author.link} key={`name-${key}`}>{author.name}</Link>
 		);
 	} else {
 		return (
@@ -82,7 +83,7 @@ function getAuthor(author: Author, key: number): React.ReactNode {
 function getLink(title: string, link: string): React.ReactNode {
 	return [
 		<span key={0}>[</span>,
-		<a href={link} target='_blank' key={1}>{title}</a>,
+		<Link href={link} target='_blank' key={1}>{title}</Link>,
 		<span className={styles.bracketClosed} key={2}>]</span>
 	];
 }
