@@ -1,5 +1,10 @@
 [
 	{
+		"title": "Canada Jay",
+		"location": "Vancouver, BC",
+		"src": "photos/canada-jay-2.jpg"
+	},
+	{
 		"title": "Turkey Vulture",
 		"location": "Hamilton, ON",
 		"src": "photos/turkey-vulture.jpg"
