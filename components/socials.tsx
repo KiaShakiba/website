@@ -3,6 +3,7 @@ import styles from '../styles/socials.module.scss';
 
 import Github from '../icons/github.svg';
 import Instagram from '../icons/instagram.svg';
+import Bluesky from '../icons/bluesky.svg';
 import Mastodon from '../icons/mastodon.svg';
 import Linkedin from '../icons/linkedin.svg';
 
@@ -16,6 +17,11 @@ const socials: Array<Social> = [
 		icon: Instagram,
 		href: 'https://instagram.com/kiashakiba',
 		className: styles.instagram
+	},
+	{
+		icon: Bluesky,
+		href: 'https://bsky.app/profile/kiashakiba.bsky.social',
+		className: styles.bluesky
 	},
 	{
 		icon: Mastodon,
