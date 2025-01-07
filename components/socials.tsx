@@ -20,7 +20,7 @@ const socials: Array<Social> = [
 	},
 	{
 		icon: Bluesky,
-		href: 'https://bsky.app/profile/kiashakiba.bsky.social',
+		href: 'https://bsky.app/profile/kiashakiba.ca',
 		className: styles.bluesky
 	},
 	{
