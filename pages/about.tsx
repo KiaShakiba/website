@@ -36,7 +36,7 @@ export default function About() {
 					<h1>Kia Shakiba</h1>
 
 					<p>Hi, my name is Kia! I&apos;m a Ph.D. Candidate at the University of Toronto in the The Edward S. Rogers Sr. Department of Electrical & Computer Engineering. The focus of my research is on in-memory cache modelling and optimization. Read more about this <Link href={Pages.RESEARCH}>here</Link>.</p>
-					<p>I received my B.A.S.c. in Computer Engineering from the University of Waterloo. During my time there I worked as a software developer for various companies, including Environment Canada, Rogers Media, and IBM Canada.</p>
+					<p>I received my B.A.Sc. in Computer Engineering from the University of Waterloo. During my time there I worked as a software developer for various companies, including Environment Canada, Rogers Media, and IBM Canada.</p>
 					<p>I&apos;m passionate about teaching. In 2019, I started an education technology company, <Link href='https://examify.ca' target='_blank'>Examify Inc.</Link>, which focuses on the online evaluation of coding assignments and examinations.</p>
 					<p>I also travel and take <Link href={Pages.PHOTOS}>pictures</Link>.</p>
 				</div>
