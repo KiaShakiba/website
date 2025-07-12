@@ -25,8 +25,10 @@ export default function Publication(props: Props) {
 						let elements =[getAuthor(author, i)];
 
 						if (i === props.authors.length - 2) {
+							const text = props.authors.length > 2 ? ', and ' : ' and ';
+
 							elements.push(
-								<span key={`sep-${i}`}>, and </span>
+								<span key={`sep-${i}`}>{text}</span>
 							);
 						} else if (i < props.authors.length - 2) {
 							elements.push(
@@ -41,7 +43,7 @@ export default function Publication(props: Props) {
 
 			<div className={styles.info}>
 				<Link href={conference.link} target='_blank'>{conference.name}</Link>
-				<span>{`, ${conference.month}, ${conference.year}, pp. ${pages.start}-${pages.end}`}</span>
+				<span>{`, ${conference.month} ${conference.year}, pp. ${pages.start}-${pages.end}`}</span>
 			</div>
 
 			<div className={styles.links}>
@@ -60,6 +62,10 @@ export default function Publication(props: Props) {
 
 					if (links.video) {
 						elements.push(getLink('VIDEO', links.video));
+					}
+
+					if (links.website) {
+						elements.push(getLink('WEBSITE', links.website));
 					}
 
 					return elements;
@@ -100,6 +106,7 @@ type Links = {
 	pdf?: string;
 	slides?: string;
 	video?: string;
+	website?: string;
 };
 
 type Conference = {
