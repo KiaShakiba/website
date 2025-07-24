@@ -26,6 +26,7 @@ const publications: Array<PublicationProps> = [
 		links: {
 			page: 'https://dl.acm.org/doi/abs/10.1145/3736548.3737836',
 			pdf: 'https://dl.acm.org/doi/pdf/10.1145/3736548.3737836',
+			slides: 'https://www.hotstorage.org/2025/slides/PaperCache_%20In-Memory%20Caching%20with%20Dynamic%20Eviction%20Policies.pdf',
 			website: 'https://papercache.io',
 		},
 	},
